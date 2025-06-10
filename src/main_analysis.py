@@ -31,8 +31,7 @@ import os
 # ---- Step 1: Load CSV ----
 if len(sys.argv) < 2:
     print("Usage: python main_analysis.py <your_data.csv>")
-    print("No CSV provided, trying to load 'example_data/example_data.csv' ...")
-    csv_path = os.path.join(os.path.dirname(__file__), '..', 'example_data', 'example_data.csv')
+    sys.exit(1)
 else:
     csv_path = sys.argv[1]
 
