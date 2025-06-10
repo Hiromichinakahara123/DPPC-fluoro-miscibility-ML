@@ -1,13 +1,12 @@
 # DPPC/Fluorinated Compound Monolayer Miscibility Analysis
 
-This repository contains scripts and example data for the feature extraction, multivariate analysis, and Bayesian logistic regression modeling described in:
+This repository contains scripts for feature extraction, multivariate analysis, and Bayesian logistic regression modeling, as described in:
 
 > Nakahara H, Shibata O. "A Review of the Miscibility of Binary Monolayers Composed of DPPC and Fluorinated Compounds: Insights from Multivariate and Bayesian Modeling" (2024)
 
 ## Contents
 
 - `src/main_analysis.py`: Main script for feature engineering, PCA, correlation analysis, and Bayesian logistic regression (PyMC).
-- `example_data/example_data.csv`: Example input data with the same structure as Table 1 in the review.
 - `requirements.txt`: List of required Python packages.
 
 ## How to use
@@ -18,18 +17,27 @@ This repository contains scripts and example data for the feature extraction, mu
     pip install -r requirements.txt
     ```
 
-2. Run the analysis script:
+2. Prepare your data as a CSV file, following the same format as described in Table 1 of the review.  
+   Required columns:
+   - isomeric SMILES(F)
+   - isomeric SMILES(DPPC)
+   - ionic strength
+   - pH
+   - temperature(K)
+   - (Thermodynamical) Miscibility
+
+3. Run the analysis script, specifying your data file:
 
     ```bash
-    python src/main_analysis.py
+    python src/main_analysis.py your_data.csv
     ```
 
-3. When prompted, select your CSV file (or use the example in `example_data/`).  
    The script will generate features, perform PCA/correlation analysis, and fit a Bayesian logistic regression model.
 
 ## Notes
 
-- Input data must include isomeric SMILES for both the fluorinated compound (F) and DPPC, plus experimental conditions and miscibility labels.
+- Input data **is not included** due to data policy.  
+  Please prepare your own CSV according to the required format.
 - The code calculates molecular descriptors using RDKit, generates delta/ratio features, and fits a Bayesian model using PyMC.
 - Example figures and statistical summaries will be output to the console and as images.
 
